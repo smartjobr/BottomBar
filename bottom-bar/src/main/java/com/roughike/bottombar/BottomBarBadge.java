@@ -7,6 +7,7 @@ import android.graphics.drawable.ShapeDrawable;
 import android.os.Build;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.AppCompatImageView;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -97,9 +98,7 @@ class BottomBarBadge extends TextView {
         setLayoutParams(params);
         setGravity(Gravity.CENTER);
 
-        final float scale = getResources().getDisplayMetrics().scaledDensity;
-        int textSize = (int) (14 * scale);
-        setTextSize(textSize);
+        setTextSize(TypedValue.COMPLEX_UNIT_SP,14);
         setTextColor(Color.WHITE);
 
         setColoredCircleBackground(backgroundColor);
