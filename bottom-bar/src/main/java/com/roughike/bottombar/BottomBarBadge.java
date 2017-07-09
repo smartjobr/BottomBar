@@ -1,11 +1,10 @@
 package com.roughike.bottombar;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.os.Build;
-import android.os.Bundle;
-import android.support.annotation.VisibleForTesting;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.AppCompatImageView;
 import android.view.Gravity;
@@ -97,7 +96,11 @@ class BottomBarBadge extends TextView {
 
         setLayoutParams(params);
         setGravity(Gravity.CENTER);
-        MiscUtils.setTextAppearance(this, R.style.BB_BottomBarBadge_Text);
+
+        final float scale = getResources().getDisplayMetrics().scaledDensity;
+        int textSize = (int) (14 * scale);
+        setTextSize(textSize);
+        setTextColor(Color.WHITE);
 
         setColoredCircleBackground(backgroundColor);
         wrapTabAndBadgeInSameContainer(tab);

@@ -94,7 +94,7 @@ public class BottomBarTab extends LinearLayout {
     void prepareLayout() {
         inflate(getContext(), getLayoutResource(), this);
         setOrientation(VERTICAL);
-        setGravity(isTitleless? Gravity.CENTER : Gravity.CENTER_HORIZONTAL);
+        setGravity(isTitleless ? Gravity.CENTER : Gravity.CENTER_HORIZONTAL);
         setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
         setBackgroundResource(MiscUtils.getDrawableRes(getContext(), R.attr.selectableItemBackgroundBorderless));
 
@@ -318,7 +318,7 @@ public class BottomBarTab extends LinearLayout {
         return 0;
     }
 
-    public void setBadgeCount(int count) {
+    public void setBadgeCount(int count, Typeface baTypeface) {
         if (count <= 0) {
             if (badge != null) {
                 badge.removeFromTab(this);
@@ -330,6 +330,9 @@ public class BottomBarTab extends LinearLayout {
 
         if (badge == null) {
             badge = new BottomBarBadge(getContext());
+            if (baTypeface != null) {
+                badge.setTypeface(baTypeface);
+            }
             badge.attachToTab(this, badgeBackgroundColor);
         }
 
@@ -341,7 +344,7 @@ public class BottomBarTab extends LinearLayout {
     }
 
     public void removeBadge() {
-        setBadgeCount(0);
+        setBadgeCount(0, null);
     }
 
     boolean isActive() {
@@ -631,7 +634,7 @@ public class BottomBarTab extends LinearLayout {
     @VisibleForTesting
     void restoreState(Bundle savedInstanceState) {
         int previousBadgeCount = savedInstanceState.getInt(STATE_BADGE_COUNT + getIndexInTabContainer());
-        setBadgeCount(previousBadgeCount);
+        setBadgeCount(previousBadgeCount, null);
     }
 
     enum Type {

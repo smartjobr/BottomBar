@@ -70,6 +70,7 @@ dependencies {
     androidTestCompile "com.google.dexmaker:dexmaker-mockito:1.2"
 }
 
+/*
 apply plugin: 'com.github.dcendents.android-maven'
 
 group = publishedGroupId                               // Maven Group ID for the artifact
@@ -175,4 +176,4 @@ if (localProps.exists()) {
             }
         }
     }
-}
+}*/
